@@ -24,4 +24,5 @@ jobs:
           mkdir droid
           cd droid
           repo init -u https://android.googlesource.com/platform/manifest -b android-12.0.0_r32
+          repo sync
           ls
