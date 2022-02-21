@@ -15,6 +15,6 @@ jobs:
           curl -s https://storage.googleapis.com/git-repo-downloads/repo.asc | gpg --verify - ${REPO} && install -m 755 ${REPO} ~/bin/repo
       - name: run repo version
         run: |
-          export PATH=$HOME/bin
-          ln -s `which python3` $HOME/bin/python
+          export PATH=$HOME/bin:$PATH
+          # ln -s `which python3` $HOME/bin/python
           repo version
