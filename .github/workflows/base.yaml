@@ -6,6 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: install python
+        run: |
+          apt update
+          apt install -y python
       - name: install repo tool
         run: |
           export REPO=$(mktemp /tmp/repo.XXXXXXXXX)
