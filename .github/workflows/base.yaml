@@ -18,7 +18,14 @@ jobs:
           export PATH=$HOME/bin:$PATH
           # ln -s `which python3` $HOME/bin/python
           repo version
+      - name: restore cache if found
+        id: cache-droid
+        uses: actions/cache@v2
+        with:
+          path: droid
+          key: android-12.0.0_r32+martyn-1337
       - name: get the source
+        if: steps.cache-droid.outputs.cache-hit != 'true'
         run: |
           export PATH=$HOME/bin:$PATH
           mkdir droid
@@ -26,3 +33,11 @@ jobs:
           repo init -u https://android.googlesource.com/platform/manifest -b android-12.0.0_r32
           repo sync
           ls
+      - name: choose the device
+        run: |
+          source build/envsetup.sh
+          lunch aosp_arm64-eng
+      - name: build for device
+        run: |
+          source build/envsetup.sh
+          m
