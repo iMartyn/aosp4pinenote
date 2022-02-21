@@ -1,0 +1,8 @@
+name: build
+on:
+  push
+jobs:
+  do-the-thing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
