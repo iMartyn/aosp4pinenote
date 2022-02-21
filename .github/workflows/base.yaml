@@ -6,10 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: install python
-        run: |
-          sudo apt update
-          sudo apt install -y python
       - name: install repo tool
         run: |
           export REPO=$(mktemp /tmp/repo.XXXXXXXXX)
@@ -20,4 +16,5 @@ jobs:
       - name: run repo version
         run: |
           export PATH=$HOME/bin
+          ln -s `which python3` $HOME/bin/python
           repo version
